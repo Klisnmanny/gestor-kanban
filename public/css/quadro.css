@@ -1,0 +1,113 @@
+/* Estilos específicos do quadro extraídos do Blade */
+
+.task-legend {
+  display: flex;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.task-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-legend__bar {
+  width: 16px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.task-legend__bar--concluida {
+  background: #1f2937;
+}
+
+.task-legend__bar--5-dias {
+  background: #dc2626;
+}
+
+.task-legend__bar--6-10-dias {
+  background: #ea580c;
+}
+
+.task-legend__bar--11-20-dias {
+  background: #eab308;
+}
+
+.task-legend__bar--21-40-dias {
+  background: #22c55e;
+}
+
+.task-legend__bar--41-dias {
+  background: #3b83f6;
+}
+
+.task-legend__bar--sem-data {
+  background: #92400e;
+}
+
+.tasks-list {
+  min-height: 200px;
+  padding-top: 12px;
+}
+
+.task-item {
+  cursor: grab;
+  padding: 12px;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.task-item .edit-task-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  padding: 4px 8px;
+}
+
+.task-item:hover .edit-task-btn {
+  opacity: 1;
+}
+
+.add-task-area {
+  margin-top: 12px;
+  padding: 0 8px;
+}
+
+.add-task-btn {
+  width: 100%;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.add-task-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}

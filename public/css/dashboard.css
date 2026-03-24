@@ -1,0 +1,420 @@
+:root {
+    --nav-bg: #172b4d;
+    --board-bg: #f4f5f7;
+    --column-bg: #ebecf0;
+    --card-bg: #ffffff;
+    --text-main: #172b4d;
+    --text-muted: #5e6c84;
+    
+    /* Cores das Tags (conforme a imagem) */
+    --tag-purple: #9b59b6;
+    --tag-green: #2ecc71;
+    --tag-red: #e74c3c;
+    --tag-orange: #f39c12;
+    --tag-blue: #3498db;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--board-bg);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navegação Superior */
+.top-nav {
+    background-color: var(--nav-bg);
+    height: 48px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Header (top-nav) improvements */
+.top-nav {
+    padding: 0 20px;
+}
+.nav-left { display:flex; align-items:center; gap:12px; }
+.nav-center { display:flex; align-items:center; justify-content:center; }
+.nav-search {
+    width: 360px;
+    max-width: calc(100% - 120px);
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    color: white;
+    outline: none;
+}
+.nav-search::placeholder { color: rgba(255,255,255,0.7); }
+.nav-right { display:flex; align-items:center; gap:12px; }
+.nav-btn { background:none; border:none; color:white; cursor:pointer; padding:8px; border-radius:8px; }
+.nav-btn:hover { background: rgba(255,255,255,0.03); }
+
+.profile-wrapper { display:flex; align-items:center; gap:8px; position:relative; }
+.profile-name { color:white; font-weight:600; margin-left:6px; }
+.profile-menu {
+    position: absolute;
+    right: 0;
+    top: 52px;
+    background: white;
+    padding: 6px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(2,6,23,0.2);
+    display: none;
+    min-width: 140px;
+    z-index: 1200;
+}
+.profile-menu a, .profile-menu button { display:block; padding:8px; color:#172b4d; text-decoration:none; width:100%; text-align:left; background:none; border:none; }
+.profile-wrapper.open .profile-menu { display:block; }
+
+@media (max-width: 800px) {
+    .nav-search { display:none; }
+}
+
+.logo-icon { color: #f39c12; font-size: 1.2rem; }
+.brand { font-weight: 600; font-size: 1rem; }
+
+.nav-btn, .menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.nav-btn:hover { opacity: 1; }
+
+/* Área do Board */
+.board-canvas {
+    flex-grow: 1;
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+    overflow-x: auto; /* Permite scroll horizontal se houver muitas colunas */
+    align-items: flex-start;
+}
+
+/* Colunas */
+.board-column {
+    background-color: var(--column-bg);
+    width: 300px;
+    min-width: 300px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.column-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.column-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.btn-more {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+/* Cards */
+.cards-container {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    cursor: pointer;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Evita que o conteúdo interno "vaze" do card */
+.card {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover { background-color: #f9f9f9; }
+
+.card-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
+}
+
+/* Garantir que botões dentro dos cards sejam visíveis (editar/excluir) */
+.card .nav-btn {
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.card .nav-btn:hover {
+    background: rgba(0,0,0,0.03);
+    color: var(--text-main);
+}
+
+.card-title h3 {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.3;
+    flex-grow: 1;
+}
+
+/* Limitar título a 2 linhas com reticências */
+.card-title h3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-edit-card {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+.dot.purple { background-color: var(--tag-purple); }
+.dot.green { background-color: var(--tag-green); }
+.dot.red { background-color: var(--tag-red); }
+.dot.black { background-color: #000000; }
+.dot.orange { background-color: var(--tag-orange); }
+.dot.red { background-color: var(--tag-red); }
+
+/* Tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.tag {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+}
+
+.tag-purple { background-color: var(--tag-purple); }
+.tag-green { background-color: var(--tag-green); }
+.tag-red { background-color: var(--tag-red); }
+.tag-orange { background-color: var(--tag-orange); }
+.tag-blue { background-color: var(--tag-blue); }
+
+/* Conteúdo Extra do Card */
+.card-content {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-content label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Descrição: limitar linhas para evitar estouro do card */
+.card-content p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 3; /* ajustar número de linhas conforme desejar */
+    -webkit-line-clamp: 3; /* ajustar número de linhas conforme desejar */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+.card-footer {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.avatars img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-left: -8px;
+}
+
+/* Botão Adicionar no fim da coluna */
+.btn-add-card {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.btn-add-card:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--text-main);
+}
+
+/* OVERLAY / MODAL (criar projeto) */
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2,6,23,0.45);
+    z-index: 1100;
+}
+.overlay.active {
+    display: flex;
+    backdrop-filter: blur(6px);
+}
+.overlay .modal {
+    background: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 640px;
+    padding: 18px;
+    box-shadow: 0 30px 60px rgba(2,6,23,0.35);
+}
+.overlay .modal .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.overlay .modal .modal-title { font-weight:700; color:var(--text-main); }
+.overlay .modal .modal-body { margin-top:8px; }
+.overlay .modal .input-wrapper input,
+.overlay .modal .input-wrapper textarea {
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #e5e7eb;
+    background:#fff;
+}
+.overlay .modal .close-btn {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #64748b;
+}
+
+@media (max-width: 720px) {
+    .overlay .modal { margin: 12px; max-width: 92%; }
+}
+
+/* Ajustes para modal de tarefa */
+.overlay .modal .input-group { margin-bottom: 14px; }
+.overlay .modal .input-group label { font-size: 13px; color: #475569; margin-bottom: 6px; display: block; }
+.overlay .modal .color-input {
+    width: 48px;
+    height: 38px;
+    padding: 3px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    cursor: pointer;
+}
+.overlay .modal .input-wrapper { display: block; }
+.overlay .modal .error-box { background:#fee2e2;color:#991b1b;padding:8px;border-radius:6px;margin-bottom:8px }
+.overlay .modal .btn-secondary { background:#eef2ff;border:1px solid #e0e7ff;color:#1e3a8a;padding:8px 12px;border-radius:8px }
+.overlay .modal .btn-primary { padding:8px 14px }
+
+/* Multiselect user picker for creating quadros */
+.user-multiselect { position: relative; }
+.user-multiselect .suggestions {
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    top: 46px;
+    background: #fff;
+    border: 1px solid #e6eef9;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+    z-index: 1200;
+    max-height: 220px;
+    overflow: auto;
+}
+.user-multiselect .suggestions .item {
+    padding: 8px 10px;
+    display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid #f1f5f9;cursor:pointer
+}
+.user-multiselect .suggestions .item:hover { background:#f8fafc }
+.selected-list .user-chip { display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;background:#fff;border:1px solid #eef2ff }
+.selected-list .user-chip .meta { flex:1 }
+.selected-list .user-chip .meta small { color:var(--text-muted);display:block }
+.selected-list .user-chip .controls { display:flex;align-items:center;gap:6px }
+.selected-list .user-chip .remove { background:transparent;border:none;color:#ef4444;cursor:pointer }
+
+@media (max-width:720px){ .user-multiselect .suggestions { top:56px } }

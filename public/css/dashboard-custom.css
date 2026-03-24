@@ -1,0 +1,84 @@
+/* Custom responsive tweaks for dashboard */
+
+/* Medium screens: stack layout vertically and allow side menu full width */
+@media (max-width: 1024px) {
+  .board-canvas {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+  }
+  .side-menu {
+    width: 100% !important;
+    min-width: auto;
+    display: block;
+    padding: 10px !important;
+    box-shadow: none;
+  }
+  .board-canvas > section {
+    width: 100%;
+  }
+  /* Cards container: 2 por linha */
+  .board-canvas section > div:nth-child(2) > div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .board-canvas section > div:nth-child(2) > div .card {
+    width: calc(50% - 10px);
+    min-width: 240px;
+  }
+}
+
+/* Small screens: single column, tighter paddings */
+@media (max-width: 720px) {
+  body {
+    height: auto;
+  }
+  .top-nav {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 12px;
+    height: auto;
+  }
+  .nav-right {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .profile-name {
+    display: none;
+  }
+  .board-canvas {
+    padding: 10px;
+    gap: 10px;
+  }
+  .side-menu {
+    padding: 10px !important;
+    border-radius: 10px;
+  }
+  /* Cards: 1 por linha no mobile */
+  .board-canvas section > div:nth-child(2) > div {
+    flex-direction: column;
+  }
+  .board-canvas section > div:nth-child(2) > div .card {
+    width: 100%;
+  }
+  .card {
+    padding: 10px;
+  }
+  .card-title h3 {
+    font-size: 1rem;
+  }
+}
+
+/* Extra small tweaks */
+@media (max-width: 480px) {
+  .btn-add-card {
+    width: 100%;
+  }
+  .side-menu nav a {
+    display: block;
+  }
+  .overlay .modal {
+    margin: 8px;
+    width: calc(100% - 16px);
+  }
+}
