@@ -1,0 +1,326 @@
+:root {
+    --primary-color: #5865f2;
+    --text-dark: #333;
+    --text-light: #fff;
+    --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* BODY */
+body {
+    background: #f5f7fb;
+}
+
+/* LAYOUT */
+.login-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ESQUERDA */
+.branding-side {
+    flex: 1.2;
+    background: var(--bg-gradient);
+    color: var(--text-light);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.mini-logo {
+    width: 36px;
+}
+
+.branding-content h1 {
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    opacity: 0.9;
+}
+
+.branding-content p {
+    opacity: 0.85;
+    margin-bottom: 40px;
+    max-width: 400px;
+}
+
+/* FEATURES */
+.features-list {
+    list-style: none;
+}
+
+.features-list li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.check-icon {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+}
+
+.check-icon::after {
+    content: "✔";
+    font-size: 12px;
+    position: absolute;
+    top: 2px;
+    left: 5px;
+}
+
+/* DIREITA */
+.form-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CARD */
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* MOBILE LOGO */
+.form-logo-mobile {
+    display: none;
+}
+
+/* TITULOS */
+.login-card h2 {
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+/* INPUT */
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    font-size: 13px;
+    margin-bottom: 5px;
+    display: block;
+    color: #475569;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 12px 12px 38px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    transition: 0.2s;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--primary-color);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+}
+
+/* OLHO */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #94a3b8;
+}
+
+/* OPTIONS */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 20px;
+    color: #64748b;
+}
+
+/* BOTÃO */
+.btn-primary {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* DIVIDER */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+/* BOTÃO SECUNDÁRIO */
+.btn-secondary {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #334155;
+    font-weight: 500;
+}
+
+/* ERRO */
+.error-box {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+/* SUCESSO */
+.success-box {
+    background: #ecfdf5;
+    color: #065f46;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .branding-side {
+        display: none;
+    }
+
+    .form-logo-mobile {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .form-logo-mobile img {
+        width: 28px;
+        opacity: 0.9;
+    }
+}
+
+/* MODAL DE CADASTRO */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.overlay.active {
+    display: flex;
+    backdrop-filter: blur(6px);
+}
+.modal {
+    background: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 520px;
+    padding: 22px;
+    box-shadow: 0 20px 50px rgba(2,6,23,0.3);
+}
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.modal-title {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #64748b;
+}
+.modal-body {
+    margin-top: 8px;
+}
+.modal .input-wrapper input {
+    background: #fff;
+}
+.modal .btn-primary {
+    margin-top: 6px;
+}
+.modal .divider {
+    margin: 14px 0;
+}
+
+@media (max-width: 520px) {
+    .modal { margin: 20px; }
+}

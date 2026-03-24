@@ -1,0 +1,123 @@
+/* Responsividade para quadro (board) */
+
+/* Tablet: empilhar colunas, legenda mais compacta */
+@media (max-width: 1024px) {
+  .board-canvas {
+    display: block;
+    padding: 12px;
+    gap: 12px;
+    width: 100%;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+  }
+  .board-column {
+    width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #ebecf0;
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: 80vh !important;
+    overflow: hidden !important;
+  }
+  .cards-container {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    margin-bottom: 8px;
+  }
+  .add-task-area {
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+  .task-legend {
+    padding: 12px;
+    gap: 12px;
+  }
+}
+
+/* Mobile: cards em lista, título menor, navegação compacta */
+@media (max-width: 720px) {
+  .top-nav {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 12px;
+    height: auto;
+  }
+  .nav-center { display: none; }
+  .nav-right span { display: none; }
+
+  .board-canvas {
+    display: block;
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+  }
+  .board-column {
+    width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: 75vh !important;
+    margin-bottom: 24px;
+    overflow: hidden !important;
+    padding: 10px;
+    background: #ebecf0;
+  }
+  .column-header h3 { font-size: 1rem; }
+  .add-task-area {
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+  .cards-container { 
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    margin-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .task-item { width: 100%; }
+  .task-item strong { font-size: 0.95rem; }
+  .task-legend {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Modais: ocupar quase toda a largura e limitar altura com scroll interno */
+  .overlay .modal {
+    width: 100%;
+    max-width: 95%;
+    margin: 8px;
+  }
+  .overlay .modal .modal-body {
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+  .overlay .modal .input-group { margin-bottom: 12px; }
+  .overlay .modal textarea { min-height: 120px; }
+
+  /* Bloco de anexos: quebrar em coluna para não estourar a tela */
+  .attachment-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .attachment-input,
+  .attachment-upload-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-legend__item { font-size: 0.9rem; }
+  .card.task-item { padding: 10px; }
+  .add-task-btn { padding: 10px 12px; }
+  .overlay .modal { margin: 8px; width: calc(100% - 16px); max-width: none; }
+  .overlay .modal .modal-body { max-height: 70vh; }
+}
